@@ -6,6 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <title>User Form</title>
     <style>
         .error{
@@ -17,9 +18,9 @@
 </head>
 
 <body>
-<div align="center">
-
 <%@ include file="menu.jsp" %>
+
+<div align="center">
 <h1>User Form</h1>
 
 <f:form action="saveUser" method="post" modelAttribute="user">  <!-- modelAttribute is name of class starting with lower case -->
@@ -52,10 +53,10 @@
     <c:forEach items="${ListofAllRoles}" var="r">
         <c:choose>
             <c:when test="${selectedRoles.contains(r)}">
-                <f:checkbox path="roles" value="${r.roleId}" label="${r.roleName}" checked="true"/>
+                <f:checkbox path="roles" value="${r.roleId}" label="${r.roleName}" checked="true" class="form-check-input"/>
             </c:when>
             <c:otherwise>
-                <f:checkbox path="roles" value="${r.roleId}" label="${r.roleName}"/>
+                <f:checkbox path="roles" value="${r.roleId}" label="${r.roleName}" class="form-check-input"/>
             </c:otherwise>
         </c:choose>
     </c:forEach>
@@ -87,14 +88,15 @@
 -->
 
     <tr>
-    <td colspan="3" align="center"> <input type="submit" value="Submit"/> </td>
+    <td colspan="3" align="center"> <input type="submit" value="Submit" class="btn btn-primary"/> </td>
     </tr>
 
 </table>
 </f:form>
 
+<div class=container-md>
 <c:if test="${not empty users}">
-    <table border="1">
+    <table border="1" class="table table-striped">
         <thead><tr> <td>ID</td> <td>Username</td> <td>Password</td> <td>Roles</td> <td>Action</td> </tr></thead>
 
         <c:forEach items="${users}" var="u">
@@ -110,9 +112,11 @@
         </c:forEach>
     </table>
 </c:if>
+</div>
 
 <%@ include file="footer.jsp" %>
 
 </div>
+<script src="js/bootstrap.bundle.js"></script>
 </body>
 </html>

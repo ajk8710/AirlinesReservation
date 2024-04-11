@@ -6,6 +6,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link href="css/bootstrap.css" rel="stylesheet">
     <title>Reservation Form</title>
     <style>
         .error{
@@ -17,9 +18,9 @@
 </head>
 
 <body>
-<div align="center">
-
 <%@ include file="menu.jsp" %>
+
+<div align="center">
 <h1>Reservation Form</h1>
 
 <f:form action="saveReservation" method="post" modelAttribute="reservation">  <!-- modelAttribute is name of class starting with lower case -->
@@ -34,7 +35,7 @@
     <tr>
     <td> <b>Passenger:</b> </td>
     <td>
-    <f:select path="passenger">
+    <f:select path="passenger" class="form-select">
         <c:forEach items="${passengers}" var="p">
                 <c:choose>
                     <c:when test="${selectedPassenger.equals(p)}">
@@ -53,7 +54,7 @@
     <tr>
     <td> <b>Flight:</b> </td>
     <td>
-    <f:select path="flight">
+    <f:select path="flight" class="form-select">
         <c:forEach items="${flights}" var="f">
                 <c:choose>
                     <c:when test="${selectedFlight.equals(f)}">
@@ -74,12 +75,17 @@
     <td> <f:input type="date" path="issuedDate" value="<%=java.time.LocalDate.now()%>"/> </td>
     <td> <f:errors path="issuedDate" cssClass="error"/> </td>
     </tr>
+    
+    <tr>
+    <td colspan="3" align="center"> <input type="submit" value="Submit" class="btn btn-primary"/> </td>
+    </tr>
 
 </table>
 </f:form>
 
+<div class=container-md>
 <c:if test="${not empty reservations}">
-    <table border="1">
+    <table border="1" class="table table-striped">
         <thead><tr>
             <td>Ticket Number</td> <td>Passenger ID</td> <td>First Name</td> <td>Last Name</td>
             <td>Flight ID</td> <td>Flight Number</td> <td>Departure</td> <td>Arrival</td>
@@ -90,16 +96,18 @@
         <c:forEach items="${reservations}" var="r">
             <tr>
             <td>${r.ticketNum}</td> <td>${r.passenger.passengerId}</td> <td>${r.passenger.firstName}</td> <td>${r.passenger.lastName}</td>
-            <td>${r.flight.flightId}</td> <td>${r.flight.flightNum}</td> <td>${r.flight.departureCity}</td> <td>${r.flight.arrivalCity}</td>
+            <td>${r.flight.flightId}</td> <td>${r.flight.flightNum}</td> <td>${r.flight.departureCity.airportCity}</td> <td>${r.flight.arrivalCity.airportCity}</td>
             <td>${r.checkedIn}</td> <td>${r.issuedDate}</td>
             <td> <a href="${pageContext.request.contextPath}/updateReservation?ticketNum=${r.ticketNum}"> Update </a> | <a href="${pageContext.request.contextPath}/deleteReservation?ticketNum=${r.ticketNum}"> Delete </a> </td>
             </tr>
         </c:forEach>
     </table>
 </c:if>
+</div>
 
 <%@ include file="footer.jsp" %>
 
 </div>
+<script src="js/bootstrap.bundle.js"></script>
 </body>
 </html>

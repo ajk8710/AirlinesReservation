@@ -9,8 +9,8 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 public class AirlineReservationApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-	    SpringApplication.run(AirlineReservationApplication.class, args);
-	}
+        SpringApplication.run(AirlineReservationApplication.class, args);
+    }
     
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
