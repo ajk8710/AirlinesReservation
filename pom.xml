@@ -117,7 +117,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-        <finalName>AirlinesReservationTC2</finalName>
+        <finalName>AirlinesReservation</finalName>
 	</build>
 
 	<packaging>war</packaging>
