@@ -10,4 +10,4 @@
 - Triggering Jenkins by GitHub webhook and handling the firewall on EC2 by Smee.
 
 ## Tools
-Java 17, Spring, Hibernate, JSP tag libraries, HTML5, Bootstrap, MySQL, Maven, Tomcat, Jenkins
+- Java 17, Spring, Hibernate, JSP tag libraries, HTML5, Bootstrap, MySQL, Maven, Tomcat, Jenkins
